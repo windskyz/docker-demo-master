@@ -16,7 +16,7 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('',registryCredential) {
+     docker.withRegistry('https://index.docker.io/',registryCredential) {
        def app = docker.build("windskyz/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }
