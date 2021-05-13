@@ -1,9 +1,5 @@
 node {
    def commit_id
-   environment {
-      registry = "windskyz/docker-nodejs-demo"
-      registryCredential = 'dockerhub'
-   }
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
@@ -16,7 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/',registryCredential) {
+     docker.withRegistry('https://index.docker.io/','dockerhub') {
        def app = docker.build("windskyz/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }
