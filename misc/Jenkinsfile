@@ -14,7 +14,7 @@ node {
    
    stage('docker build/push') { // step build va push len docker hub
      docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') { //login vao docker hub voi credential da nhap
-       def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.').push() // build docker voi ten va commit id, sau do push len dockerhub
+       def app = docker.build("windskyz/docker-nodejs-demo:${commit_id}", '.').push() // build docker voi ten va commit id, sau do push len dockerhub
      }
    }
 }
